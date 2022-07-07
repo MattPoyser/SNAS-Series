@@ -30,7 +30,7 @@ parser.add_argument('--port', type=int, default=23333, help='distributed port')
 
 parser.add_argument('--epochs', type=int, default=150, help='num of training epochs')
 
-parser.add_argument('--data', type=str, default='../data', help='location of the data corpus')
+parser.add_argument('--data', type=str, default='/hdd/PhD/data/cifar10', help='location of the data corpus')
 parser.add_argument('--batch_size', type=int, default=64, help='batch size')
 
 parser.add_argument('--learning_rate', type=float, default=0.025, help='init learning rate')
@@ -274,8 +274,8 @@ class neural_architecture_search():
     def init_loaddata(self):
 
         train_transform, valid_transform = utils._data_transforms_cifar10(self.args)
-        train_data = dset.CIFAR10(root=self.args.data, train=True, download=True, transform=train_transform)
-        valid_data = dset.CIFAR10(root=self.args.data, train=False, download=True, transform=valid_transform)
+        train_data = dset.CIFAR10(root=self.args.data, train=True, download=False, transform=train_transform)
+        valid_data = dset.CIFAR10(root=self.args.data, train=False, download=False, transform=valid_transform)
 
 
         if self.args.seed:
